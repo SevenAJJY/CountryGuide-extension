@@ -27,6 +27,25 @@ body.t-dark {
     --bg-color: hsl(var(--hue), 13%, 17%);
 }
 
+::selection {
+    color: var(--text-white);
+    background: var(--main-color);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--body-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--main-color);
+}
+
 
 /************ base *************/
 
@@ -134,6 +153,7 @@ header .dark-mode i {
     border-radius: 5px;
     padding: 0 60px 0 20px;
     font-size: 18px;
+    color: var(--text-dark-gray);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -179,4 +199,60 @@ header .dark-mode i {
 
 .autocom-box li:hover {
     background: var(--bg-color);
+}
+
+.result {
+    margin: 20px;
+}
+
+.flag-img {
+    display: block;
+    padding: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 45%;
+    min-width: 120px;
+    margin: 1.8em auto .5em;
+}
+
+.popup h2 {
+    font-weight: 500;
+    color: var(--text-dark-gray);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list-info li {
+    list-style: none;
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.list-info li i {
+    background-color: var(--body-bg-color);
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+}
+
+.list-info li span:nth-child(2) {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.list-info li span:nth-child(3) {
+    padding-left: 10px;
+    font-size: 15px;
 }
