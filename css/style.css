@@ -1,0 +1,104 @@
+/************ Fonts *************/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+/************ Variables *************/
+
+:root {
+    --hue: 266;
+    --satueation: 70%;
+    --lightness: 55%;
+    --main-color: hsl(var(--hue), var(--satueation), var(--lightness));
+    /************ Text Colors *************/
+    --text-dark-gray: hsl(0, 0%, 20%);
+    --dark-light: hsl(0, 0%, 84%);
+    /************ bg Colors *************/
+    --body-bg-color: hsl(var(--hue), 70%, 89%);
+    --bg-color: hsl(var(--hue), 60%, 96%);
+}
+
+
+/************ Override variables for dark theme *************/
+
+body.t-dark {
+    /************ Text Colors *************/
+    --text-dark-gray: hsl(0, 0%, 84%);
+    /************ bg Colors *************/
+    --bg-color: hsl(var(--hue), 13%, 17%);
+}
+
+
+/************ base *************/
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--text-dark-gray);
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; */
+}
+
+.header {
+    width: 100%;
+    background: var(--main-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .logo a {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+    transform: scale(0.9);
+    letter-spacing: 2px;
+    color: var(--bg-color);
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.header .logo a span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-dark-gray);
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+}
+
+.header .logo a span::before {
+    content: "";
+    position: absolute;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-top: 2px solid var(--text-dark-gray);
+    border-right: 2px solid transparent;
+    border-left: 0px solid transparent;
+}
+
+.header .logo a span::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--text-dark-gray);
+    width: 8px;
+    height: 8px;
+    box-shadow: 0px 0px 5px var(--main-color);
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    z-index: 9;
+}
