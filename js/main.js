@@ -3,6 +3,7 @@
 const searchWrapper = document.querySelector(".search-input");
 const inputBox = document.querySelector(".search-input input");
 const suggBox = document.querySelector(".autocom-box");
+const searchBtn = document.querySelector('.icon');
 
 let suggestions = [];
 
@@ -22,9 +23,10 @@ async function getAllCountriesNames() {
     }
 }
 
-console.log(suggestions);
-
 getAllCountriesNames();
+
+
+
 
 // if user press any key and release
 inputBox.addEventListener('keyup', (e) => {
@@ -35,13 +37,16 @@ inputBox.addEventListener('keyup', (e) => {
         emptyArray = suggestions.filter((data) => {
             return data.toLowerCase().startsWith(userData.toLowerCase());
         });
-        console.log(emptyArray);
+
+        emptyArray = emptyArray.map((i) => {
+            data = `<strong style="color:var(--main-color)">${i.substr(0, userData.length)}</strong>`;
+            data += i.substr(userData.length);
+            return data
+        });
         emptyArray = emptyArray.map((data) => {
-            data.split("").forEach((span) => {
-                console.log(span);
-            })
             return data = `<li>${data}</li>`;
         });
+
         searchWrapper.classList.add('active');
         showSuggestions(emptyArray);
         let allList = suggBox.querySelectorAll('li');
