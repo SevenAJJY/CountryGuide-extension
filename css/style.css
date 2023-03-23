@@ -9,48 +9,23 @@
     --satueation: 70%;
     --lightness: 55%;
     --main-color: hsl(var(--hue), var(--satueation), var(--lightness));
-    --main-color-dcv: hsl(var(--hue) var(--satueation) var(--lightness) / 82%);
     --main-color-light: hsl(var(--hue) var(--satueation) var(--lightness) / 31%);
     --main-color-x-light: hsl(var(--hue) var(--satueation) var(--lightness) / 12%);
     --dark-light: hsl(0, 0%, 84%);
-    /************ Text Colors *************/
     --text-white: hsl(0, 0%, 100%);
-    --text-light-gray: hsl(0, 0%, 96%);
-    --text-x-dark-gray: hsl(0, 0%, 10%);
     --text-dark-gray: hsl(0, 0%, 20%);
-    /************ bg Colors *************/
     --body-bg-color: hsl(var(--hue), 60%, 94%);
     --bg-color: hsl(var(--hue), 60%, 96%);
-    --bg-white: hsl(0, 0%, 100%);
-    /************ Border Colors *************/
     --border-color: hsl(var(--hue), 48%, 80%);
-    /************ shadow Colors *************/
     --shadow: 0 0 10px hsla(var(--hue), 57%, 63%, 0.3);
     --focus-shadow: 0 0 10px hsla(var(--hue), 57%, 63%, 0.6);
-    /************ font size *************/
-    --fs-4xl: 50px;
-    --fs-3xl: 35px;
-    --fs-2xl: 26px;
-    --fs-1xl: 20px;
-    --fs-lg: 18px;
-    --fs-md: 16px;
-    --fs-sm: 14px;
 }
 
-
-/************ Override variables for dark theme *************/
-
 body.t-dark {
-    /************ Text Colors *************/
-    --text-x-dark-gray: hsl(0, 0%, 94%);
     --text-dark-gray: hsl(0, 0%, 84%);
-    /************ bg Colors *************/
     --body-bg-color: hsl(var(--hue), 20%, 10%);
     --bg-color: hsl(var(--hue), 13%, 17%);
-    /************ Border Colors *************/
     --border-color: hsl(var(--hue), 15%, 30%);
-    /************ shadow Colors *************/
-    --shadow: 0 0 10px hsla(var(--hue), 19%, 7%, 0.9);
 }
 
 ::selection {
@@ -72,9 +47,6 @@ body.t-dark {
     background-color: var(--main-color);
 }
 
-
-/************ base *************/
-
 * {
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
@@ -84,10 +56,10 @@ body.t-dark {
 
 body {
     color: var(--text-dark-gray);
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100vh; */
 }
 
 .popup {
@@ -301,7 +273,6 @@ header .dark-mode i {
     align-items: center;
     height: 40px;
     margin-top: 10px;
-    overflow: auto;
     background-color: var(--body-bg-color);
 }
 
@@ -403,9 +374,6 @@ header .dark-mode i {
 .pl__tick:nth-child(8) {
     animation-delay: -0.25s;
 }
-
-
-/* Animations */
 
 @keyframes arrows42 {
     from {

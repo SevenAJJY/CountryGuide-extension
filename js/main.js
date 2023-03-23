@@ -28,6 +28,7 @@ async function getAllCountriesNames() {
     }
 }
 
+
 getAllCountriesNames();
 
 

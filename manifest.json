@@ -3,6 +3,7 @@
     "name": "Guide Country",
     "description": "displays info on all of the world's countries, allowing users to filter countries by name and region, and view detailed info on each country.",
     "version": "1.0",
+    "permissions": ["<all_urls>"],
     "background": {
         "service_worker": "background.js"
     },
