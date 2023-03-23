@@ -1,5 +1,12 @@
-// getting All required Elements
+/**
+ * Guide Country Extension
+ * @author  yassine El hajjy (SevenAJJY) <yassine.elhajjy@gmail.com>
+ * 
+ * @see https://github.com/SevenAJJY
+ */
 
+
+// getting All required Elements
 const searchWrapper = document.querySelector(".search-input");
 const inputBox = document.querySelector(".search-input input");
 const suggBox = document.querySelector(".autocom-box");
@@ -9,12 +16,17 @@ const listInfo = resultBox.querySelector('.list-info');
 const darkLightMode = document.querySelector('.dark-mode i');
 const loader = document.querySelector('.loader');
 
-
+/**
+ * We will fetch all country names and store them in this empty array
+ * @var array
+ */
 let suggestions = [];
 
 
-// get all countries names and store him in  suggestions
-
+/**
+ * get all countries names and store him in  suggestions
+ * @returns void
+ */
 async function getAllCountriesNames() {
     try {
         let response = await fetch('https://restcountries.com/v3.1/all');
@@ -29,7 +41,6 @@ async function getAllCountriesNames() {
     }
 }
 
-
 getAllCountriesNames();
 
 
@@ -40,17 +51,16 @@ function getInfo() {
 
     resultBox.innerHTML = "";
     searchWrapper.classList.remove('active');
-    //show error if the user doesn't entered country name
+    /**
+     * show error if the user doesn't entered country name
+     */
     if (inputBox.value.length != 0) {
-
         loader.classList.toggle('active');
         setTimeout(async() => {
             // validate country name entered by the user
             if (validateCountryName()) {
-
                 loader.classList.toggle('active');
                 let countryName = inputBox.value;
-
                 try {
                     let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
                     let countryInfo = await response.json();
@@ -70,6 +80,11 @@ function getInfo() {
     }
 }
 
+/**
+ * validate country name entered by the user
+ * @returns {boolean}
+ */
+
 function validateCountryName() {
     // let res = suggestions.find((e) => e == inputBox.value);
 
@@ -78,9 +93,13 @@ function validateCountryName() {
 }
 
 
-
+/**
+ * Show information in the Box Result
+ * @param {object} country 
+ * @returns {void}
+ */
 function showInfo(country) {
-
+    console.log(typeof country);
     let info = `
         <header>
             <p>Informations</p>
@@ -146,17 +165,31 @@ function showInfo(country) {
 
 }
 
+/**
+ * clear Box Result
+ * @returns {boolean}
+ */
 function clearResult() {
 
     resultBox.innerHTML = "";
     inputBox.value = "";
-
+    return true;
 }
 
-// if user press any key and release
+
+/**
+ * if user press any key and release
+ */
 inputBox.addEventListener('keyup', (e) => {
 
+    /**
+     * User data
+     */
     let userData = e.target.value;
+
+    /**
+     * An empty array in which we will store the countries names that match what the user entered
+     */
     let emptyArray = [];
 
     if (userData) {
@@ -178,15 +211,10 @@ inputBox.addEventListener('keyup', (e) => {
         let allList = suggBox.querySelectorAll('li');
         allList.forEach((li) => {
             li.addEventListener('click', (e) => {
-
                 selectUserData = e.target.textContent;
-
                 inputBox.value = selectUserData;
-
                 searchWrapper.classList.remove('active');
-
                 searchBtn.click();
-
             })
         })
     } else {
@@ -195,7 +223,12 @@ inputBox.addEventListener('keyup', (e) => {
 
 });
 
-// show Suggestions (autocomplete)
+
+/**
+ * show Suggestions (autocomplete)
+ * @param {*} list 
+ * @returns {void}
+ */
 function showSuggestions(list) {
 
     let listData;
@@ -210,7 +243,11 @@ function showSuggestions(list) {
     suggBox.innerHTML = listData;
 }
 
-// dark mode
+/**
+ * dark mode
+ * @param {*} e 
+ * @returns {void}
+ */
 const themeLightDark = (e) => {
 
     const themeDark = () => {

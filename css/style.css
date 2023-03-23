@@ -160,6 +160,12 @@ header .dark-mode i {
     font-size: 20px;
     color: var(--main-color);
     cursor: pointer;
+    border-radius: 5px;
+    transition: transform .3s ease;
+}
+
+.search-input .icon:hover i {
+    transform: scale(1.1);
 }
 
 .search-input .autocom-box {
@@ -212,7 +218,7 @@ header .dark-mode i {
 }
 
 .result {
-    margin: 20px;
+    padding: 0 20px 20px;
     background-color: var(--bg-color);
 }
 
