@@ -6,7 +6,7 @@
 ----
 > A web extension that displays info on all of the world's countries, allowing users to filter countries by name and region, and view detailed info on each country.
 
-Visit this extension  <a href="https://sevenajjy.github.io/ColorPicker-Extension/">here</a>
+Visit this extension  <a href="sevenajjy.github.io/CountryGuide-extens/">here</a>
 </br>
 
 
