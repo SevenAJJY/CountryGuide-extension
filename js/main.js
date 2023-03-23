@@ -93,7 +93,7 @@ function validateCountryName() {
  * @returns {string}
  */
 function NameMatching() {
-    let countryName = inputBox.value.charAt(0).toUpperCase() + inputBox.value.slice(1);
+    let countryName = inputBox.value.charAt(0).toUpperCase() + inputBox.value.slice(1).toLowerCase();
     return countryName;
 }
 
