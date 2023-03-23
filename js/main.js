@@ -7,6 +7,7 @@ const searchBtn = document.querySelector('.icon');
 const resultBox = document.querySelector('.result');
 const listInfo = resultBox.querySelector('.list-info');
 const darkLightMode = document.querySelector('.dark-mode i');
+const loader = document.querySelector('.loader');
 
 
 let suggestions = [];
@@ -33,15 +34,20 @@ getAllCountriesNames();
 // if user click on search button
 searchBtn.addEventListener('click', getInfo);
 
-async function getInfo() {
-    let countryName = inputBox.value;
-    try {
-        let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
-        let countryInfo = await response.json();
-        showInfo(countryInfo);
-    } catch (er) {
-        console.log(er);
-    }
+function getInfo() {
+    resultBox.innerHTML = "";
+    loader.classList.toggle('active');
+    setTimeout(async() => {
+        loader.classList.toggle('active');
+        let countryName = inputBox.value;
+        try {
+            let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+            let countryInfo = await response.json();
+            showInfo(countryInfo);
+        } catch (er) {
+            console.log(er);
+        }
+    }, 3000);
 }
 
 function showInfo(country) {
