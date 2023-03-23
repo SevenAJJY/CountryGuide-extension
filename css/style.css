@@ -47,6 +47,10 @@ body.t-dark {
     background-color: var(--main-color);
 }
 
+::placeholder {
+    font-size: 16px;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
@@ -56,10 +60,6 @@ body.t-dark {
 
 body {
     color: var(--text-dark-gray);
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; */
 }
 
 .popup {
@@ -152,10 +152,6 @@ header .dark-mode i {
     color: var(--text-dark-gray);
     background-color: var(--bg-color);
     border-bottom: 1px solid var(--border-color);
-}
-
-::placeholder {
-    font-size: 16px;
 }
 
 .search-input .icon {

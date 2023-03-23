@@ -38,24 +38,28 @@ searchBtn.addEventListener('click', getInfo);
 function getInfo() {
     resultBox.innerHTML = "";
     searchWrapper.classList.remove('active');
+    //show error if the user doesn't entered country name
     if (inputBox.value.length != 0) {
         loader.classList.toggle('active');
         setTimeout(async() => {
+            // validate country name entered by the user
             if (validateCountryName()) {
                 loader.classList.toggle('active');
                 let countryName = inputBox.value;
                 try {
                     let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
                     let countryInfo = await response.json();
+                    console.log(countryInfo[0].currencies[Object.keys(countryInfo[0].currencies)].name[0]);
                     showInfo(countryInfo);
                 } catch (er) {
-                    throw Error('Sorry!-_-');
+                    // throw Error('Sorry! no data for this country' + er);
+                    resultBox.innerHTML = `<span class="error">Sorry! no data for this country</span>`;
                 }
             } else {
                 resultBox.innerHTML = `<span class="error">Please Entre a Valid Country Name!</span>`;
                 loader.classList.toggle('active');
             }
-        }, 3000);
+        }, 2000);
     } else {
         resultBox.innerHTML = `<span class="error">The Input Field Cannot Be Empty!</span>`;
     }
@@ -63,7 +67,9 @@ function getInfo() {
 
 function validateCountryName() {
     // let res = suggestions.find((e) => e == inputBox.value);
+
     return suggestions.includes(inputBox.value);
+
 }
 
 
@@ -74,34 +80,42 @@ function showInfo(country) {
             <p>Informations</p>
             <span class="clear-all" onclick="clearResult()">Clear</span>
         </header>
+
         <img src="${country[0].flags.svg}" class="flag-img" />
+
         <h2>${country[0].name.common}</h2>
+
         <ul class="list-info">
             <li>
                 <i class="fa-solid fa-flag"></i>
                 <span>Native Name:</span>
                 <span>${country[0].name.common}</span>
             </li>
+
             <li>
                 <i class="fa-solid fa-landmark-flag"></i>
                 <span>Capital:</span>
                 <span>${country[0].capital[0]}</span>
             </li>
+
             <li>
                 <i class="fa-solid fa-people-group"></i>
                 <span>Population:</span>
                 <span>${country[0].population}</span>
             </li>
+
             <li>
                 <i class="fa-solid fa-globe"></i>
                 <span>Region:</span>
                 <span>${country[0].region}</span>
             </li>
+
             <li>
                 <i class="fa-solid fa-earth-africa"></i>
                 <span>Sub-region:</span>
                 <span>${country[0].subregion}</span>
             </li>
+
             <li>
                 <i class="fa-solid fa-language"></i>
                 <span>Languages:</span>
@@ -110,6 +124,7 @@ function showInfo(country) {
                     .split(',')
                     .join(', ')}</span>
             </li>
+            
             <li>
                 <i class="fa-solid fa-coins"></i>
                 <span>Currencies:</span>
@@ -123,12 +138,15 @@ function showInfo(country) {
 }
 
 function clearResult() {
+
     resultBox.innerHTML = "";
     inputBox.value = "";
+
 }
 
 // if user press any key and release
 inputBox.addEventListener('keyup', (e) => {
+
     let userData = e.target.value;
     let emptyArray = [];
 
@@ -154,11 +172,13 @@ inputBox.addEventListener('keyup', (e) => {
                 selectUserData = e.target.textContent;
                 inputBox.value = selectUserData;
                 searchWrapper.classList.remove('active');
+                searchBtn.click();
             })
         })
     } else {
         searchWrapper.classList.remove('active');
     }
+
 });
 
 
@@ -190,6 +210,7 @@ const themeLightDark = (e) => {
         e.currentTarget.classList.replace('fa-sun', 'fa-moon');
         localStorage.setItem('t_dark', true);
         themeDark();
+
     } else {
         e.currentTarget.classList.replace('fa-moon', 'fa-sun');
         localStorage.setItem('t_dark', false);
