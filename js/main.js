@@ -95,10 +95,11 @@ function validateCountryName() {
  */
 function NameMatching() {
     let countryName = inputBox.value.trim();
-    countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1).toLowerCase();
-    let regex = /^[a-zA-Z]+$/;
+    countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1);
+    let regex = /^[\wãéíÅ,\- \(\)]+$/;
     if (regex.test(countryName)) return countryName;
 }
+
 
 
 /**

@@ -292,6 +292,9 @@ header .dark-mode i {
 .list-info li span:nth-child(3) {
     padding-left: 10px;
     font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .loader {
