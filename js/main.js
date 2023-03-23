@@ -6,6 +6,8 @@ const suggBox = document.querySelector(".autocom-box");
 const searchBtn = document.querySelector('.icon');
 const resultBox = document.querySelector('.result');
 const listInfo = resultBox.querySelector('.list-info');
+const darkLightMode = document.querySelector('.dark-mode i');
+
 
 let suggestions = [];
 
@@ -136,3 +138,40 @@ function showSuggestions(list) {
 
     suggBox.innerHTML = listData;
 }
+
+// dark mode
+const themeLightDark = (e) => {
+
+    const themeDark = () => {
+        if (localStorage.getItem('t_dark') !== 'false') {
+            document.body.classList.add('t-dark');
+        } else {
+            document.body.classList.remove('t-dark');
+        }
+    }
+
+
+    if (e.currentTarget.classList.contains('fa-sun')) {
+        e.currentTarget.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('t_dark', true);
+        themeDark();
+    } else {
+        e.currentTarget.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('t_dark', false);
+        themeDark();
+    }
+
+
+    if (localStorage.getItem('t_dark') !== null) {
+        themeDark();
+    }
+};
+
+
+if (localStorage.getItem('t_dark') == 'true') {
+    darkLightMode.classList.replace('fa-sun', 'fa-moon');
+    document.body.classList.add('t-dark');
+}
+
+
+darkLightMode.addEventListener('click', (e) => themeLightDark(e));
