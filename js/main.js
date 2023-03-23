@@ -36,22 +36,43 @@ searchBtn.addEventListener('click', getInfo);
 
 function getInfo() {
     resultBox.innerHTML = "";
-    loader.classList.toggle('active');
-    setTimeout(async() => {
+    searchWrapper.classList.remove('active');
+    if (inputBox.value.length != 0) {
         loader.classList.toggle('active');
-        let countryName = inputBox.value;
-        try {
-            let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
-            let countryInfo = await response.json();
-            showInfo(countryInfo);
-        } catch (er) {
-            console.log(er);
-        }
-    }, 3000);
+        setTimeout(async() => {
+            if (validateCountryName()) {
+                loader.classList.toggle('active');
+                let countryName = inputBox.value;
+                try {
+                    let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+                    let countryInfo = await response.json();
+                    showInfo(countryInfo);
+                } catch (er) {
+                    throw Error('Sorry!-_-');
+                }
+            } else {
+                resultBox.innerHTML = `<span class="error">Please Entre a Valid Country Name!</span>`;
+                loader.classList.toggle('active');
+            }
+        }, 3000);
+    } else {
+        resultBox.innerHTML = `<span class="error">The Input Field Cannot Be Empty!</span>`;
+    }
 }
+
+function validateCountryName() {
+    // let res = suggestions.find((e) => e == inputBox.value);
+    return suggestions.includes(inputBox.value);
+}
+
+
 
 function showInfo(country) {
     let info = `
+        <header>
+            <p>Informations</p>
+            <span class="clear-all" onclick="clearResult()">Clear</span>
+        </header>
         <img src="${country[0].flags.svg}" class="flag-img" />
         <h2>${country[0].name.common}</h2>
         <ul class="list-info">
@@ -97,6 +118,12 @@ function showInfo(country) {
     `;
 
     resultBox.innerHTML = info;
+
+}
+
+function clearResult() {
+    resultBox.innerHTML = "";
+    inputBox.value = "";
 }
 
 // if user press any key and release
@@ -132,6 +159,7 @@ inputBox.addEventListener('keyup', (e) => {
         searchWrapper.classList.remove('active');
     }
 });
+
 
 function showSuggestions(list) {
     let listData;

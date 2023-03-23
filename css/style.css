@@ -182,6 +182,10 @@ header .dark-mode i {
     border-bottom: 1px solid var(--border-color);
 }
 
+::placeholder {
+    font-size: 16px;
+}
+
 .search-input .icon {
     height: 55px;
     width: 55px;
@@ -247,6 +251,27 @@ header .dark-mode i {
 .result {
     margin: 20px;
     background-color: var(--bg-color);
+}
+
+.result .error {
+    font-size: 14px;
+    color: red;
+    padding-left: 20px;
+}
+
+.result header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.result header p {
+    color: var(--text-dark-gray);
+}
+
+.result header span.clear-all {
+    color: var(--main-color);
+    cursor: pointer;
 }
 
 .flag-img {
