@@ -60,6 +60,7 @@ function getInfo() {
             if (validateCountryName()) {
                 loader.classList.toggle('active');
                 let countryName = NameMatching();
+
                 try {
                     let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
                     let countryInfo = await response.json();
@@ -93,8 +94,10 @@ function validateCountryName() {
  * @returns {string}
  */
 function NameMatching() {
-    let countryName = inputBox.value.charAt(0).toUpperCase() + inputBox.value.slice(1).toLowerCase();
-    return countryName;
+    let countryName = inputBox.value.trim();
+    countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1).toLowerCase();
+    let regex = /^[a-zA-Z]+$/;
+    if (regex.test(countryName)) return countryName;
 }
 
 
