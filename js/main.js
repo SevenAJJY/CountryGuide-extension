@@ -5,7 +5,6 @@
  * @see https://github.com/SevenAJJY
  */
 
-
 // getting All required Elements
 const searchWrapper = document.querySelector(".search-input");
 const inputBox = document.querySelector(".search-input input");
@@ -90,6 +89,15 @@ function validateCountryName() {
 
     return suggestions.includes(inputBox.value);
 
+}
+
+/**
+ * Converts the first letter of the country name in the input string to uppercase. To match the names of countries during the search
+ * @returns {string}
+ */
+function NameMatching() {
+    let countryName = inputBox.value.charAt(0).toUpperCase() + inputBox.value.slice(1);
+    return countryName;
 }
 
 
