@@ -59,11 +59,10 @@ function getInfo() {
             // validate country name entered by the user
             if (validateCountryName()) {
                 loader.classList.toggle('active');
-                let countryName = inputBox.value;
+                let countryName = NameMatching();
                 try {
                     let response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
                     let countryInfo = await response.json();
-                    console.log(countryInfo[0].currencies[Object.keys(countryInfo[0].currencies)].name[0]);
                     showInfo(countryInfo);
                 } catch (er) {
                     // throw Error('Sorry! no data for this country' + er);
@@ -83,11 +82,9 @@ function getInfo() {
  * validate country name entered by the user
  * @returns {boolean}
  */
-
 function validateCountryName() {
     // let res = suggestions.find((e) => e == inputBox.value);
-
-    return suggestions.includes(inputBox.value);
+    return suggestions.includes(NameMatching());
 
 }
 
@@ -107,7 +104,6 @@ function NameMatching() {
  * @returns {void}
  */
 function showInfo(country) {
-    console.log(typeof country);
     let info = `
         <header>
             <p>Informations</p>
