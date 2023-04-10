@@ -27,10 +27,6 @@ Visit this extension  <a href="sevenajjy.github.io/CountryGuide-extens/">here</a
   <img src="/icons/preview.PNG"/>
 </p>
 
-<pre><code>tell application "Foo"
-    beep
-end tell
-</code></pre>
 
 -----
 
